@@ -1,0 +1,122 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.container {
+    background-image: url('../image/Banner-TET-2025.gif');
+    background-position: center;
+    background-size: contain;
+    height: 100vh;
+    text-align: center;
+    color: white;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.container h1 {
+    font-size: 4rem;
+    margin: 0;
+    padding-top: 20px;
+    pointer-events: none;
+}
+
+.container p {
+    font-size: 1.5rem;
+}
+
+.envelope {
+    /* border: 1px solid blue; */
+    height: 170px;
+    width: 150px;
+    background-image: url('../image/lucky-money-envelopes.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    animation: fall 4s ease-in-out infinite;
+    z-index: 10;
+}
+
+.total-lucky-money {
+    position: fixed;
+    font-size: 1.2rem;
+    border-radius: 10px;
+    background-color: chocolate;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px chocolate;
+    bottom: 10px;
+    right: 10px;
+}
+
+.firework {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-image: url('../image/firework.gif');
+    pointer-events: none;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.floating-text {
+    position: absolute;
+    font-size: 1.5rem;
+    color: gold;
+    font-weight: bold;
+    animation: float-up 5s ease-out forwards;
+    pointer-events: none;
+
+}
+
+@keyframes fall {
+    0% {
+        transform: translateX(-50%) translateY(-100%) rotate(0deg) scale(0.8);
+        opacity: 1;
+        top: -200px;
+    }
+
+    25% {
+        transform: translateX(10px) translateY(25vh) rotate(10deg) scale(1);
+        opacity: 0.9;
+    }
+
+    50% {
+        transform: translateX(-10px) translateY(50vh) rotate(-10deg) scale(1.1);
+        opacity: 0.8;
+    }
+
+    75% {
+        transform: translateX(5px) translateY(75vh) rotate(5deg) scale(1);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: translateX(0) translateY(100vh) rotate(0deg) scale(1);
+        opacity: 0;
+        top: 100vh;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes float-up {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+}
