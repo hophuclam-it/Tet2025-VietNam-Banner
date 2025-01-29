@@ -79,4 +79,4 @@ let totalMoney = 0;
         }, 2000);
 
         }
-        setInterval(createEnvelope, 1000);
+        setInterval(createEnvelope, 1500);
