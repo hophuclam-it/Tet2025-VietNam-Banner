@@ -15,7 +15,7 @@ function createEnvelope() {
     envelope.classList.add('envelope');
 
     // Random vị trí ngang
-    const x = Math.random() * window.innerWidth;
+    const x = Math.random() * (window.innerWidth-150);
     envelope.style.left = `${x}px`;
 
     // Random tốc độ rơi

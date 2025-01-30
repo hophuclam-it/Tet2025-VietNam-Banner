@@ -9,14 +9,16 @@ body {
     background: black;
 }
 
+
 .container {
     background-image: url('../image/Banner-TET-2025.gif');
     background-position: center;
-    background-size: cover;
+    background-size: cover; 
     height: 100vh;
+    width: 100vw;
     text-align: center;
     color: white;
-    position: relative;
+    z-index: -1;
     overflow: hidden;
 }
 
@@ -42,6 +44,7 @@ body {
     cursor: pointer;
 
 }
+
 
 .total-lucky-money {
     position: fixed;
@@ -111,5 +114,14 @@ body {
     to {
         transform: translateY(-50px);
         opacity: 0;
+    }
+}
+
+
+/* 🔹 Điều chỉnh cho thiết bị di động có màn hình dọc */
+@media screen and (max-aspect-ratio: 9/16) {
+    .container {
+        background-size: contain;  /* 🔹 Hiển thị đầy đủ hình nền */
+        background-position: top center;
     }
 }
