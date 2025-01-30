@@ -9,6 +9,9 @@ Chào mừng bạn đến với dự án "Tết Việt Nam 2025 Banner"! Đây l
 - **Âm nhạc nền**: Nhạc nền chúc mừng năm mới được phát liên tục trong suốt quá trình sử dụng.
 - **Floating Text**: Sau khi nhận lì xì, một thông điệp chúc mừng sẽ "bay" lên màn hình với hiệu ứng động.
 
+## Demo
+![Picture demo of TetVietNam2025Banner](demo.gif)
+
 ## Cách sử dụng
 
 1. **Clone repository**:
