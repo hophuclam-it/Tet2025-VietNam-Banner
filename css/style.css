@@ -5,20 +5,23 @@
     overflow: hidden;
 }
 
+body {
+    background: black;
+}
+
 .container {
     background-image: url('../image/Banner-TET-2025.gif');
     background-position: center;
-    background-size: contain;
+    background-size: cover;
     height: 100vh;
     text-align: center;
     color: white;
-    z-index: -1;
+    position: relative;
     overflow: hidden;
 }
 
 .container h1 {
     font-size: 4rem;
-    margin: 0;
     padding-top: 20px;
     pointer-events: none;
 }
@@ -28,15 +31,16 @@
 }
 
 .envelope {
-    /* border: 1px solid blue; */
     height: 170px;
     width: 150px;
     background-image: url('../image/lucky-money-envelopes.png');
     background-repeat: no-repeat;
     background-size: contain;
     position: absolute;
-    animation: fall 4s ease-in-out infinite;
+    animation: fall linear infinite;
     z-index: 10;
+    cursor: pointer;
+
 }
 
 .total-lucky-money {
@@ -52,8 +56,8 @@
 
 .firework {
     position: absolute;
-    width: 200px;
-    height: 200px;
+    width: 100px;
+    height: 100px;
     background-image: url('../image/firework.gif');
     pointer-events: none;
     background-repeat: no-repeat;
@@ -65,9 +69,8 @@
     font-size: 1.5rem;
     color: gold;
     font-weight: bold;
-    animation: float-up 5s ease-out forwards;
+    animation: float-up 2s ease-out forwards;
     pointer-events: none;
-
 }
 
 @keyframes fall {
@@ -89,7 +92,7 @@
 
     75% {
         transform: translateX(5px) translateY(75vh) rotate(5deg) scale(1);
-        opacity: 0.6;
+        opacity: 0.7;
     }
 
     100% {
@@ -99,24 +102,14 @@
     }
 }
 
-@keyframes fade-out {
-    0% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}
-
 @keyframes float-up {
-    0% {
-        opacity: 1;
+    from {
         transform: translateY(0);
+        opacity: 1;
     }
 
-    100% {
-        opacity: 0;
+    to {
         transform: translateY(-50px);
+        opacity: 0;
     }
 }

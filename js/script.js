@@ -1,82 +1,87 @@
 let totalMoney = 0;
-        let backgroundMusic = document.getElementById('background-music');
-        backgroundMusic.volume = 0.3;
+let backgroundMusic = document.getElementById('background-music');
+backgroundMusic.volume = 0.3;
 
-        // created envelope
-        function createEnvelope() {
-            let envelope = document.createElement('div');
-            envelope.classList.add('envelope');
+// 🔹 Fix lỗi nhạc không phát trên mobile
+document.addEventListener('click', () => {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play().catch(error => console.log("Autoplay blocked:", error));
+    }
+});
 
-            //random
-            const x = Math.random() * window.innerWidth;
-            envelope.style.left = `${x}px`;
+// 🔹 Tạo bao lì xì rơi xuống
+function createEnvelope() {
+    let envelope = document.createElement('div');
+    envelope.classList.add('envelope');
 
-            const duration = 5 + Math.random() * 5;
-            const delay = Math.random() * 4;
-            envelope.style.animationDuration = `${duration}s`;
+    // Random vị trí ngang
+    const x = Math.random() * window.innerWidth;
+    envelope.style.left = `${x}px`;
 
-            envelope.addEventListener('click', (e) => {
-                let amount = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000];
-                let amountRandom = amount[Math.floor(Math.random() * amount.length)];
-                totalMoney += amountRandom;
-                document.querySelector('.total-lucky-money').innerText = `Tiền Lì Xì: ${totalMoney.toLocaleString('vn-VN')} VND`;
+    // Random tốc độ rơi
+    const duration = 5 + Math.random() * 5;
+    envelope.style.animationDuration = `${duration}s`;
 
-                //create Firework
-                createFirework(e.clientX, e.clientY);
+    // Khi click vào bao lì xì
+    envelope.addEventListener('click', (e) => {
+        let amount = [1000, 2000, 5000, 10000, 20000, 50000, 100000, 200000, 500000];
+        let amountRandom = amount[Math.floor(Math.random() * amount.length)];
+        totalMoney += amountRandom;
+        document.querySelector('.total-lucky-money').innerText = `Tiền Lì Xì: ${totalMoney.toLocaleString('vn-VN')} VND`;
 
-                //createFloatingText
-                createFloatingText(`+${amountRandom.toLocaleString('vn-VN')} VND`, e.clientX, e.clientY);
+        // Hiệu ứng pháo hoa & số tiền lì xì
+        createFirework(e.clientX, e.clientY);
+        createFloatingText(`+${amountRandom.toLocaleString('vn-VN')} VND`, e.clientX, e.clientY);
 
-                playFireworkSound();
-                envelope.remove();
-            });
+        // Âm thanh hiệu ứng
+        playFireworkSound();
+        envelope.remove();
+    });
 
+    document.body.appendChild(envelope);
 
-            document.body.appendChild(envelope);
-            // document.getElementsByClassName('container').appendChild(envelope);
+    // 🔹 Tự xóa lì xì khi rơi quá khỏi màn hình
+    setTimeout(() => {
+        envelope.remove();
+    }, duration * 1000);
+}
 
-            envelope.addEventListener("animationend", () => {
-                envelope.remove();
-            });
+// 🔹 Tạo hiệu ứng pháo hoa
+function createFirework(x, y) {
+    const firework = document.createElement('div');
+    firework.classList.add('firework');
+    firework.style.left = `${x}px`;
+    firework.style.top = `${y}px`;
 
+    document.body.appendChild(firework);
 
-        }
+    setTimeout(() => {
+        firework.remove();
+    }, 1000);
+}
 
-        function createFirework(x, y) {
-            const firework = document.createElement('div');
-            firework.classList.add('firework');
-            firework.style.left = `${x}px`;
-            firework.style.top = `${y}px`;
+// 🔹 Phát âm thanh pháo hoa
+function playFireworkSound() {
+    const fireworkSound = document.getElementById('firework-sound');
+    fireworkSound.currentTime = 0;
+    fireworkSound.play();
+}
 
-            document.body.appendChild(firework);
+// 🔹 Hiển thị số tiền lì xì
+function createFloatingText(text, x, y) {
+    let floatingText = document.createElement('div');
+    floatingText.classList.add('floating-text');
+    floatingText.innerText = text;
 
-            // setTimeout(() => {
-            //     firework.remove();
-            // }, 3000);
-        };
+    floatingText.style.left = `${x}px`;
+    floatingText.style.top = `${y - 20}px`;
 
-        function playFireworkSound() {
-            const fireworkSound = document.getElementById('firework-sound');
-            fireworkSound.currentTime = 0;
-            fireworkSound.play();
-        }
+    document.body.appendChild(floatingText);
 
-        function createFloatingText(text, x, y) {
-            let floatingText = document.createElement('div');
-            floatingText.classList.add('floating-text');
-            floatingText.innerText = text;
+    setTimeout(() => {
+        floatingText.remove();
+    }, 2000);
+}
 
-            floatingText.style.left = `${x}px`;
-            floatingText.style.top = `${y}px`;
-
-            document.body.appendChild(floatingText);
-
-
-
-
-        setTimeout(() => {
-            floatingText.remove();
-        }, 2000);
-
-        }
-        setInterval(createEnvelope, 1500);
+// 🔹 Tạo lì xì rơi liên tục
+setInterval(createEnvelope, 1500);
