@@ -16,4 +16,4 @@ Chào mừng bạn đến với dự án "Tết Việt Nam 2025 Banner"! Đây l
 
 1. **Clone repository**:
    ```bash
-   git clone https://github.com/username/ten-repository.git
+   git clone https://github.com/hophuclam-it/Tet2025-VietNam-Banner.git
